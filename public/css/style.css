@@ -159,12 +159,12 @@ body {
 
 /* New Page */
 .add-btn {
-    background-color: #fe424d !important;
+    background-color:  #115E59 !important;
     border: none !important;
 }
 
 .edit-btn {
-    background-color: #fe424d !important;
+    background-color:  #115E59 !important;
     border: none !important;
 }
 
@@ -327,16 +327,20 @@ body {
     white-space: nowrap;
 }
 
-.tripnest-tax-row {
+
+.tax-info {
     display: none;
     white-space: nowrap;
     color: var(--tripnest-primary);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    margin-left: 8px;
 }
 
-.tripnest-tax-row.show {
-    display: inline !important;
+.tax-info.show {
+    display: inline-block !important;
 }
-
 
 
 
@@ -403,17 +407,6 @@ body {
     font-size: 0.75rem;
 }
 
-.tripnest-tax-row {
-    min-height: 1.2rem;
-    margin-top: 0.65rem;
-}
-
-.tax-info {
-    display: none;
-    color: var(--tripnest-primary);
-    font-size: 0.78rem;
-    font-weight: 700;
-}
 
 .listing-link {
     text-decoration: none !important;
