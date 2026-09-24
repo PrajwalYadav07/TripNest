@@ -2,34 +2,33 @@ const Listing = require("../models/listing.js")
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
-
-// module.exports.index = async (req, res) => {
-//     const allListing = await Listing.find({});
-//     res.render("listings/index.ejs", { allListing });
-// };
+const allowedCategories = Listing.listingCategories || [];
 
 module.exports.index = async (req, res) => {
-    const { search } = req.query;
+    const { search, category } = req.query;
 
-    let allListing;
+    let query = {};
+
+    if (category && allowedCategories.includes(category)) {
+        query.category = category;
+    }
 
     if (search && search.trim() !== "") {
         const searchRegex = new RegExp(search.trim(), "i");
 
-        allListing = await Listing.find({
-            $or: [
-                { title: searchRegex },
-                { location: searchRegex },
-                { country: searchRegex }
-            ]
-        });
-    } else {
-        allListing = await Listing.find({});
+        query.$or = [
+            { title: searchRegex },
+            { location: searchRegex },
+            { country: searchRegex }
+        ];
     }
+
+    const allListing = await Listing.find(query);
 
     res.render("listings/index.ejs", {
         allListing,
-        search
+        search,
+        category
     });
 };
 
