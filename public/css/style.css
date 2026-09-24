@@ -3,30 +3,86 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #F8FAFC;
 }
 
 .container {
     flex: 1;
 }
 
+:root {
+    --tripnest-primary: #0F766E;
+    --tripnest-primary-dark: #115E59;
+    --tripnest-accent: #14B8A6;
+    --tripnest-text-dark: #172033;
+    --tripnest-bg-light: #F8FAFC;
+    --tripnest-white: #FFFFFF;
+    --tripnest-border: #E5E7EB;
+}
 
 /* navbar */
 
 .navbar {
-    height: 5rem;
-    background-color: white;
+    min-height: 5rem;
+    background-color: var(--tripnest-white);
+}
+
+.tripnest-brand {
+    color: var(--tripnest-primary) !important;
+}
+
+.tripnest-brand:hover {
+    color: var(--tripnest-primary-dark) !important;
 }
 
 .fa-compass {
-    color: #fe424d;
-    font-size: 2rem;
+    color: var(--tripnest-primary);
+    font-size: 1.7rem;
 }
 
-.nav-link {
-    color: #222222 !important;
+.tripnest-nav-link {
+    color: var(--tripnest-text-dark) !important;
+    font-weight: 500;
 }
 
+.tripnest-nav-link:hover {
+    color: var(--tripnest-primary) !important;
+}
 
+.tripnest-search-input {
+    min-width: 240px;
+    border-color: var(--tripnest-border) !important;
+}
+
+.tripnest-search-input:focus {
+    border-color: var(--tripnest-primary) !important;
+    box-shadow: 0 0 0 0.15rem rgba(15, 118, 110, 0.15) !important;
+}
+
+.tripnest-search-btn,
+.tripnest-primary-btn {
+    background-color: var(--tripnest-primary);
+    border-color: var(--tripnest-primary);
+    color: var(--tripnest-white);
+}
+
+.tripnest-search-btn:hover,
+.tripnest-primary-btn:hover {
+    background-color: var(--tripnest-primary-dark);
+    border-color: var(--tripnest-primary-dark);
+    color: var(--tripnest-white);
+}
+
+.tripnest-list-home-btn {
+    color: var(--tripnest-primary);
+    border-color: var(--tripnest-primary);
+}
+
+.tripnest-list-home-btn:hover {
+    color: var(--tripnest-white);
+    background-color: var(--tripnest-primary);
+    border-color: var(--tripnest-primary);
+}
 
 /* footer */
 
@@ -53,8 +109,6 @@ body {
     font-size: 1.2rem;
 }
 
-
-
 .f-info {
     text-align: center;
     display: flex;
@@ -64,8 +118,6 @@ body {
     justify-content: center;
     align-items: space-evenly;
 }
-
-
 
 /* card */
 
@@ -133,6 +185,5 @@ body {
 }
 
 /* Map  */
-
 
 #map { height: 400px; width: 80vh; }
