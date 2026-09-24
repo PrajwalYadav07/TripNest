@@ -2,322 +2,423 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/webfonts/fa-solid-900.woff2" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --tripnest-primary: #0f766e;
-    --tripnest-primary-dark: #115e59;
-    --tripnest-accent: #14b8a6;
-    --tripnest-text: #172033;
-    --tripnest-muted: #6b7280;
-    --tripnest-bg: #f8fafc;
-    --tripnest-white: #ffffff;
-    --tripnest-border: #e5e7eb;
+    --tn-ink: #10201d;
+    --tn-ink-soft: #3d4f4b;
+    --tn-muted: #7a8a86;
+    --tn-teal: #0f766e;
+    --tn-teal-dark: #0b5a53;
+    --tn-sand: #f4efe7;
+    --tn-cream: #faf7f1;
+    --tn-white: #ffffff;
+    --tn-line: rgba(16, 32, 29, 0.1);
   }
 
   html { scroll-behavior: smooth; }
 
   body {
     overflow-x: hidden;
-    background: var(--tripnest-bg);
-    color: var(--tripnest-text);
-    font-family: "Poppins", sans-serif;
+    background: var(--tn-cream);
+    color: var(--tn-ink);
   }
 
-  .tripnest-home,
-  .tripnest-home * {
-    font-family: "Poppins", sans-serif;
+  .tn-home {
+    font-family: "Plus Jakarta Sans", sans-serif;
   }
 
-  .tripnest-hero {
+  .tn-serif {
+    font-family: "Fraunces", Georgia, serif !important;
+  }
+
+  /* ---------- Hero ---------- */
+
+  .tn-hero {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     position: relative;
-    min-height: 78vh;
+    min-height: 92vh;
     display: flex;
-    align-items: center;
-    padding: 5rem 0 8rem;
+    align-items: flex-end;
+    isolation: isolate;
     background:
-      linear-gradient(90deg, rgba(15, 68, 65, 0.72) 0%, rgba(15, 68, 65, 0.38) 55%, rgba(23, 32, 51, 0.12) 100%),
-      url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=85") center/cover no-repeat;
+      linear-gradient(180deg, rgba(16, 32, 29, 0.15) 0%, rgba(16, 32, 29, 0.05) 40%, rgba(16, 32, 29, 0.78) 100%),
+      url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=85") center/cover no-repeat;
   }
 
-  .tripnest-hero-content {
+  .tn-hero-inner {
     position: relative;
     z-index: 1;
-    max-width: 680px;
+    width: 100%;
+    padding: 0 0 7.5rem;
   }
 
-  .tripnest-hero h1 {
-    max-width: 650px;
-    margin-bottom: 1.25rem;
-    color: var(--tripnest-white);
-    font-size: clamp(2.25rem, 5vw, 4rem);
-    font-weight: 700;
-    line-height: 1.12;
+  .tn-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
   }
 
-  .tripnest-hero-copy {
-    max-width: 620px;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.05rem;
+  .tn-eyebrow::before {
+    content: "";
+    width: 2.4rem;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .tn-hero h1 {
+    max-width: 15ch;
+    margin: 0 0 1.4rem;
+    color: var(--tn-white);
+    font-size: clamp(2.9rem, 6.5vw, 5.4rem);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+  }
+
+  .tn-hero h1 em {
+    font-style: italic;
     font-weight: 400;
+  }
+
+  .tn-hero-copy {
+    max-width: 34rem;
+    margin: 0 0 2.4rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.05rem;
     line-height: 1.75;
   }
 
-  .tripnest-primary-btn {
-    padding: 0.8rem 1.6rem;
-    border: 1px solid var(--tripnest-primary);
-    background: var(--tripnest-primary);
-    color: var(--tripnest-white);
-    font-weight: 500;
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .tripnest-primary-btn:hover,
-  .tripnest-primary-btn:focus {
-    border-color: var(--tripnest-primary-dark);
-    background: var(--tripnest-primary-dark);
-    color: var(--tripnest-white);
-    transform: translateY(-2px);
-  }
-
-  .tripnest-info-wrap {
-    position: absolute;
-    z-index: 2;
-    right: 0;
-    bottom: -58px;
-    left: 0;
-  }
-
-  .tripnest-info-panel {
-    width: min(82%, 1050px);
-    margin: 0 auto;
-    padding: 1.5rem 1.75rem;
-    border: 1px solid rgba(229, 231, 235, 0.8);
-    border-radius: 24px;
-    background: var(--tripnest-white);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  }
-
-  .tripnest-info-item {
-    min-height: 64px;
-  }
-
-  .tripnest-info-icon,
-  .tripnest-feature-icon {
+  .tn-cta {
     display: inline-flex;
-    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.55rem 0.55rem 0.55rem 1.7rem;
+    border-radius: 999px;
+    background: var(--tn-white);
+    color: var(--tn-ink);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .tn-cta:hover {
+    color: var(--tn-ink);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  }
+
+  .tn-cta-icon {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 46px;
-    height: 46px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
-    background: rgba(20, 184, 166, 0.12);
-    color: var(--tripnest-primary);
-    font-size: 1.1rem;
+    background: var(--tn-teal);
+    color: var(--tn-white);
+    font-size: 0.85rem;
+    transition: background-color 0.25s ease;
   }
 
-  .tripnest-info-item h2 {
-    margin: 0 0 0.2rem;
-    color: var(--tripnest-text);
-    font-size: 0.98rem;
+  .tn-cta:hover .tn-cta-icon {
+    background: var(--tn-teal-dark);
+  }
+
+  /* ---------- Stats strip ---------- */
+
+  .tn-stats {
+    position: relative;
+    z-index: 2;
+    margin-top: -3.4rem;
+  }
+
+  .tn-stats-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 20px;
+    background: var(--tn-white);
+    box-shadow: 0 24px 60px rgba(16, 32, 29, 0.14);
+    overflow: hidden;
+  }
+
+  .tn-stat {
+    padding: 1.7rem 2rem;
+    text-align: center;
+  }
+
+  .tn-stat + .tn-stat {
+    border-left: 1px solid var(--tn-line);
+  }
+
+  .tn-stat-number {
+    display: block;
+    color: var(--tn-teal);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .tn-stat-label {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--tn-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Features ---------- */
+
+  .tn-features {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 6.5rem 0 6rem;
+    background: var(--tn-cream);
+  }
+
+  .tn-section-head {
+    max-width: 40rem;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+
+  .tn-section-eyebrow {
+    display: block;
+    margin-bottom: 0.9rem;
+    color: var(--tn-teal);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .tn-section-title {
+    margin: 0 0 1rem;
+    color: var(--tn-ink);
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .tn-section-copy {
+    margin: 0;
+    color: var(--tn-muted);
+    line-height: 1.75;
+  }
+
+  .tn-feature {
+    height: 100%;
+    padding: 2.2rem 2rem;
+    border: 1px solid var(--tn-line);
+    border-radius: 22px;
+    background: var(--tn-white);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .tn-feature:hover {
+    transform: translateY(-5px);
+    border-color: rgba(15, 118, 110, 0.25);
+    box-shadow: 0 20px 44px rgba(16, 32, 29, 0.1);
+  }
+
+  .tn-feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 16px;
+    background: var(--tn-sand);
+    color: var(--tn-teal);
+    font-size: 1.15rem;
+  }
+
+  .tn-feature h3 {
+    margin: 1.3rem 0 0.6rem;
+    color: var(--tn-ink);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.25rem;
     font-weight: 600;
   }
 
-  .tripnest-info-item p {
+  .tn-feature p {
     margin: 0;
-    color: var(--tripnest-muted);
-    font-size: 0.82rem;
-  }
-
-  .tripnest-features {
-    padding: 8.5rem 0 5rem;
-    background: var(--tripnest-bg);
-  }
-
-  .tripnest-section-title {
-    margin-bottom: 0.75rem;
-    color: var(--tripnest-text);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 700;
-  }
-
-  .tripnest-section-copy {
-    max-width: 580px;
-    margin: 0 auto 2.5rem;
-    color: var(--tripnest-muted);
+    color: var(--tn-muted);
+    font-size: 0.92rem;
     line-height: 1.7;
   }
 
-  .tripnest-feature-card {
-    height: 100%;
-    padding: 1.75rem;
-    border: 1px solid var(--tripnest-border);
-    border-radius: 16px;
-    background: var(--tripnest-white);
-    box-shadow: 0 7px 22px rgba(23, 32, 51, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* ---------- Closing CTA band ---------- */
+
+  .tn-band {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    position: relative;
+    padding: 5.5rem 0;
+    isolation: isolate;
+    text-align: center;
+    background:
+      linear-gradient(rgba(11, 90, 83, 0.88), rgba(11, 90, 83, 0.88)),
+      url("https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=2000&q=80") center/cover no-repeat fixed;
   }
 
-  .tripnest-feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(23, 32, 51, 0.1);
+  .tn-band h2 {
+    max-width: 22ch;
+    margin: 0 auto 1rem;
+    color: var(--tn-white);
+    font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.15;
   }
 
-  .tripnest-feature-card h3 {
-    margin: 1.15rem 0 0.6rem;
-    color: var(--tripnest-text);
-    font-size: 1.08rem;
-    font-weight: 600;
+  .tn-band p {
+    max-width: 32rem;
+    margin: 0 auto 2.2rem;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.7;
   }
 
-  .tripnest-feature-card p {
-    margin: 0;
-    color: var(--tripnest-muted);
-    font-size: 0.93rem;
-    line-height: 1.65;
+  .tn-band .tn-cta {
+    padding-left: 1.7rem;
   }
+
+  /* ---------- Responsive ---------- */
 
   @media (max-width: 991.98px) {
-    .tripnest-hero {
-      min-height: 76vh;
-      padding-bottom: 9rem;
-    }
-
-    .tripnest-info-panel { width: 90%; }
+    .tn-hero { min-height: 84vh; }
+    .tn-hero-inner { padding-bottom: 8.5rem; }
   }
 
   @media (max-width: 767.98px) {
-    .tripnest-hero {
-      min-height: 80vh;
-      align-items: flex-start;
-      padding-top: 6rem;
-      padding-bottom: 12.5rem;
+    .tn-hero {
+      min-height: 86vh;
       background-position: 62% center;
     }
 
-    .tripnest-hero-copy { font-size: 0.96rem; }
+    .tn-hero-inner { padding-bottom: 11rem; }
+    .tn-hero-copy { font-size: 0.96rem; }
 
-    .tripnest-primary-btn {
-      width: 100%;
-      max-width: 280px;
-    }
+    .tn-stats { margin-top: -6.5rem; }
 
-    .tripnest-info-wrap { bottom: -155px; }
-
-    .tripnest-info-panel {
-      width: calc(100% - 1.5rem);
-      padding: 1rem 1.1rem;
+    .tn-stats-panel {
+      grid-template-columns: 1fr;
       border-radius: 18px;
     }
 
-    .tripnest-info-item {
-      min-height: 50px;
+    .tn-stat { padding: 1.2rem 1.4rem; }
+
+    .tn-stat + .tn-stat {
+      border-left: none;
+      border-top: 1px solid var(--tn-line);
     }
 
-    .tripnest-info-icon {
-      width: 40px;
-      height: 40px;
-    }
-
-    .tripnest-features { padding-top: 12.5rem; }
+    .tn-features { padding: 4.5rem 0 4rem; }
+    .tn-band { background-attachment: scroll; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-
-    .tripnest-primary-btn,
-    .tripnest-feature-card {
-      transition: none;
-    }
+    .tn-cta, .tn-feature { transition: none; }
   }
 </style>
 
-<main class="tripnest-home">
-  <section class="tripnest-hero">
-    <div class="container">
-      <div class="tripnest-hero-content">
-        <h1>Discover Your Next Escape</h1>
-        <p class="tripnest-hero-copy">
-          Find beautiful places to stay, explore new destinations, and create unforgettable travel memories with TripNest.
-        </p>
-        <a href="/listings" class="btn rounded-pill tripnest-primary-btn">
-          Explore Listings
-          <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
-        </a>
+<main class="tn-home">
+  <!-- Hero -->
+  <section class="tn-hero">
+    <div class="container tn-hero-inner">
+      <span class="tn-eyebrow">Stays worth remembering</span>
+      <h1 class="tn-serif">Find the place your next story <em>begins</em></h1>
+      <p class="tn-hero-copy">
+        TripNest curates beautiful homes, hideaways, and retreats around the world —
+        so every journey starts somewhere extraordinary.
+      </p>
+      <a href="/listings" class="tn-cta">
+        Explore Listings
+        <span class="tn-cta-icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <div class="container tn-stats" aria-label="TripNest at a glance">
+    <div class="tn-stats-panel">
+      <div class="tn-stat">
+        <span class="tn-stat-number">120+</span>
+        <span class="tn-stat-label">Destinations</span>
+      </div>
+      <div class="tn-stat">
+        <span class="tn-stat-number">1,400+</span>
+        <span class="tn-stat-label">Unique Stays</span>
+      </div>
+      <div class="tn-stat">
+        <span class="tn-stat-number">4.9<i class="fa-solid fa-star ms-1" style="font-size:1.1rem;" aria-hidden="true"></i></span>
+        <span class="tn-stat-label">Guest Rating</span>
       </div>
     </div>
+  </div>
 
-    <div class="tripnest-info-wrap" aria-label="TripNest highlights">
-      <div class="tripnest-info-panel">
-        <div class="row g-3 align-items-center">
-          <div class="col-md-4 col-12">
-            <div class="tripnest-info-item d-flex align-items-center gap-3">
-              <span class="tripnest-info-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-              <div>
-                <h2>Beautiful Destinations</h2>
-                <p>Places worth discovering</p>
-              </div>
-            </div>
-          </div>
+  <!-- Features -->
+  <section class="tn-features">
+    <div class="container">
+      <div class="tn-section-head">
+        <span class="tn-section-eyebrow">Why TripNest</span>
+        <h2 class="tn-section-title tn-serif">Travel made beautifully simple</h2>
+        <p class="tn-section-copy">
+          Everything you need to find a stay that feels right — nothing you don't.
+        </p>
+      </div>
 
-          <div class="col-md-4 col-12">
-            <div class="tripnest-info-item d-flex align-items-center gap-3">
-              <span class="tripnest-info-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
-              <div>
-                <h2>Unique Stays</h2>
-                <p>Spaces with character</p>
-              </div>
-            </div>
-          </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6 col-12">
+          <article class="tn-feature">
+            <span class="tn-feature-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+            <h3>Beautiful Destinations</h3>
+            <p>Handpicked places across the globe, from quiet coastlines to vibrant city corners.</p>
+          </article>
+        </div>
 
-          <div class="col-md-4 col-12">
-            <div class="tripnest-info-item d-flex align-items-center gap-3">
-              <span class="tripnest-info-icon"><i class="fa-solid fa-plane-departure" aria-hidden="true"></i></span>
-              <div>
-                <h2>Memorable Journeys</h2>
-                <p>Moments to remember</p>
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <article class="tn-feature">
+            <span class="tn-feature-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
+            <h3>Stays With Character</h3>
+            <p>Homes, cabins, and retreats chosen for comfort, charm, and a sense of place.</p>
+          </article>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-12">
+          <article class="tn-feature">
+            <span class="tn-feature-icon"><i class="fa-regular fa-compass" aria-hidden="true"></i></span>
+            <h3>Effortless Exploration</h3>
+            <p>Browse listings, compare stays, and find your next destination in minutes.</p>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="tripnest-features">
+  <!-- Closing CTA band -->
+  <section class="tn-band">
     <div class="container">
-      <div class="text-center">
-        <h2 class="tripnest-section-title">Why TripNest?</h2>
-        <p class="tripnest-section-copy">Everything you need to find a stay that feels right for your next journey.</p>
-      </div>
-
-      <div class="row g-4 justify-content-center">
-        <div class="col-lg-4 col-md-6 col-12">
-          <article class="card tripnest-feature-card shadow-sm">
-            <span class="tripnest-feature-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-            <h3>Beautiful Destinations</h3>
-            <p>Discover unique places around the world.</p>
-          </article>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12">
-          <article class="card tripnest-feature-card shadow-sm">
-            <span class="tripnest-feature-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
-            <h3>Comfortable Stays</h3>
-            <p>Find stays that fit your travel plans.</p>
-          </article>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12">
-          <article class="card tripnest-feature-card shadow-sm">
-            <span class="tripnest-feature-icon"><i class="fa-regular fa-compass" aria-hidden="true"></i></span>
-            <h3>Simple Exploration</h3>
-            <p>Explore listings and find your next destination.</p>
-          </article>
-        </div>
-      </div>
+      <h2 class="tn-serif">Your next escape is already waiting</h2>
+      <p>Start browsing TripNest listings and turn “someday” into a booking.</p>
+      <a href="/listings" class="tn-cta">
+        Explore Listings
+        <span class="tn-cta-icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+      </a>
     </div>
   </section>
 </main>

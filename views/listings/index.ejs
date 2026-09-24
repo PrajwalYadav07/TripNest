@@ -13,69 +13,70 @@
 ]; %>
 
 <div class="tripnest-listings-page container py-4 py-lg-5">
-    <div id="filters" class="tripnest-filter-bar">
-        <% tripnestCategories.forEach((item) => { %>
-            <% const filterHref = "/listings?category=" + encodeURIComponent(item.name) + (search ? "&search=" + encodeURIComponent(search) : ""); %>
-            <a class="filter tripnest-category <%= category === item.name ? 'active' : '' %>" href="<%= filterHref %>">
-                <div class="tripnest-category-icon"><i class="<%= item.icon %>"></i></div>
-                <span><%= item.name %></span>
-            </a>
-        <% }) %>
+  <div id="filters" class="tripnest-filter-bar">
+    <% tripnestCategories.forEach((item) => { %>
+    <% const filterHref = "/listings?category=" + encodeURIComponent(item.name) + (search ? "&search=" + encodeURIComponent(search) : ""); %>
+    <a class="filter tripnest-category <%= category === item.name ? 'active' : '' %>" href="<%= filterHref %>">
+      <div class="tripnest-category-icon"><i class="<%= item.icon %>"></i></div>
+      <span><%= item.name %></span>
+    </a>
+    <% }) %>
 
-        <div class="tripnest-tax-toggle">
-            <div class="form-check form-switch d-flex align-items-center gap-2 mb-0">
-                <input class="form-check-input tripnest-toggle-input" type="checkbox" role="switch" id="switchCheckDefault">
-                <label class="form-check-label tripnest-toggle-label" for="switchCheckDefault">Display total after taxes</label>
+    <div class="tripnest-tax-toggle">
+      <div class="form-check form-switch d-flex align-items-center gap-2 mb-0">
+        <input class="form-check-input tripnest-toggle-input" type="checkbox" role="switch" id="switchCheckDefault">
+        <label class="form-check-label tripnest-toggle-label" for="switchCheckDefault">Display total after taxes</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mt-1">
+    <% for( listing of allListing) { %>
+    <div class="col">
+      <a href="/listings/<%= listing._id %>" class="listing-link tripnest-listing-link">
+        <div class="card listing-card tripnest-card h-100">
+          <div class="position-relative overflow-hidden">
+            <img src="<%= listing.image.url %>" class="card-img-top tripnest-card-image" alt="listing_img">
+            <div class="tripnest-price-badge">₹<%= listing.price?.toLocaleString("en-IN") %> / Night <div class="tripnest-tax-row">
+                <span class="tax-info">+18% GST</span>
+              </div>
             </div>
+
+          </div>
+          <div class="card-body tripnest-card-body">
+            <h5 class="tripnest-card-title"><%= listing.title %></h5>
+            <p class="tripnest-card-description"><%= listing.description %></p>
+            <% if (listing.location || listing.country) { %>
+            <div class="tripnest-location-wrap">
+              <span class="tripnest-location-icon"><i class="fa-solid fa-location-dot"></i></span>
+              <div class="tripnest-location-text">
+                <% if (listing.location) { %>
+                <div class="tripnest-location"><%= listing.location %></div>
+                <% } %>
+                <% if (listing.country) { %>
+                <div class="tripnest-country"><%= listing.country %></div>
+                <% } %>
+              </div>
+            </div>
+            <% } %>
+          </div>
         </div>
+      </a>
     </div>
-
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mt-1">
-        <% for( listing of allListing) { %>
-            <div class="col">
-                <a href="/listings/<%= listing._id %>" class="listing-link tripnest-listing-link">
-                    <div class="card listing-card tripnest-card h-100">
-                        <div class="position-relative overflow-hidden">
-                            <img src="<%= listing.image.url %>" class="card-img-top tripnest-card-image" alt="listing_img">
-                            <div class="tripnest-price-badge">₹<%= listing.price?.toLocaleString("en-IN") %> / Night</div>
-                        </div>
-                        <div class="card-body tripnest-card-body">
-                            <h5 class="tripnest-card-title"><%= listing.title %></h5>
-                            <p class="tripnest-card-description"><%= listing.description %></p>
-                            <% if (listing.location || listing.country) { %>
-                                <div class="tripnest-location-wrap">
-                                    <span class="tripnest-location-icon"><i class="fa-solid fa-location-dot"></i></span>
-                                    <div class="tripnest-location-text">
-                                        <% if (listing.location) { %>
-                                            <div class="tripnest-location"><%= listing.location %></div>
-                                        <% } %>
-                                        <% if (listing.country) { %>
-                                            <div class="tripnest-country"><%= listing.country %></div>
-                                        <% } %>
-                                    </div>
-                                </div>
-                            <% } %>
-                            <div class="tripnest-tax-row">
-                                <span class="tax-info">+18% GST</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        <% } %>
-    </div>
+    <% } %>
+  </div>
 </div>
 
 <script>
-    let taxSwitch = document.getElementById("switchCheckDefault");
-    taxSwitch.addEventListener("click", () => {
-        let taxInfo = document.getElementsByClassName("tax-info");
-        for (let info of taxInfo) {
-            if (info.style.display !== "inline") {
-                info.style.display = "inline";
-            } else {
-                info.style.display = "none";
-            }
-        }
-    })
+  let taxSwitch = document.getElementById("switchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (let info of taxInfo) {
+      if (info.style.display !== "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  })
 </script>
