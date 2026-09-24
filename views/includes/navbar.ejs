@@ -1,37 +1,37 @@
 <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top shadow-sm">
   <div class="container-fluid px-4">
+
+    <!-- TripNest Brand -->
     <a class="navbar-brand tripnest-brand fw-bold" href="/">
       <i class="fa-regular fa-compass me-2"></i>
       TripNest
     </a>
 
-    <button
-      class="navbar-toggler border-0"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Navbar Content -->
     <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Left Navigation -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
-          <a class="nav-link tripnest-nav-link" href="/">Explore</a>
+          <a class="nav-link tripnest-nav-link" href="/">
+            Explore
+          </a>
         </li>
+
       </ul>
 
-      <% if (currUser) { %>
+
+      <!-- Search -->
+      <!-- Search is visible ONLY when user is logged in -->
+      <% if (typeof currUser !== "undefined" && currUser) { %>
         <form class="d-flex align-items-center gap-2 my-2 my-lg-0 me-lg-3" role="search" method="GET" action="/listings">
-          <input
-            class="form-control tripnest-search-input rounded-pill border shadow-sm"
-            type="search"
-            name="search"
-            placeholder="Search Destinations"
-          />
+          <input class="form-control tripnest-search-input rounded-pill border shadow-sm" type="search" name="search" placeholder="Search Destinations">
           <button class="btn tripnest-search-btn rounded-pill" type="submit">
             <i class="fa-solid fa-magnifying-glass me-1"></i>
             Search
@@ -39,21 +39,33 @@
         </form>
       <% } %>
 
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+
+      <!-- Right Side -->
+      <ul class="navbar-nav ms-auto align-items-center gap-2">
+
+        <!-- List Your Property -->
         <li class="nav-item">
-          <a href="/listings/new" class="btn tripnest-list-home-btn rounded-pill px-3">List your propery</a>
+
+          <a href="/listings/new" class="btn tripnest-list-home-btn rounded-pill px-3">
+            List your property
+          </a>
+
         </li>
 
-        <% if (!currUser) { %>
+
+        <!-- Authentication -->
+        <% if (typeof currUser !== "undefined" && currUser) { %>
+          <!-- Logged In -->
+          <li class="nav-item">
+            <a href="/logout" class="btn tripnest-outline-btn rounded-pill px-3"><b>Log out</b></a>
+          </li>
+        <% } else { %>
+          <!-- Logged Out -->
           <li class="nav-item">
             <a href="/signup" class="btn tripnest-primary-btn rounded-pill px-3"><b>Sign Up</b></a>
           </li>
           <li class="nav-item">
-            <a href="/login" class="btn btn-outline-dark rounded-pill px-3"><b>Log in</b></a>
-          </li>
-        <% } else { %>
-          <li class="nav-item">
-            <a href="/logout" class="btn btn-outline-dark rounded-pill px-3"><b>Log out</b></a>
+            <a href="/login" class="btn tripnest-outline-btn rounded-pill px-3"><b>Log In</b></a>
           </li>
         <% } %>
       </ul>

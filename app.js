@@ -63,14 +63,6 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 
 
-
-// ---------------------Main Root----------------------
-
-app.get("/", (req, res) => {
-    res.render("home");
-})
-
-
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     crypto: {
@@ -119,6 +111,15 @@ app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next();
 })
+
+
+
+// ---------------------Main Root----------------------
+
+app.get("/", (req, res) => {
+    res.render("home");
+})
+
 
 
 // app.get("/demouser", async(req, res) => {
