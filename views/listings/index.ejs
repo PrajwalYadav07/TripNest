@@ -37,9 +37,9 @@
         <div class="card listing-card tripnest-card h-100">
           <div class="position-relative overflow-hidden">
             <img src="<%= listing.image.url %>" class="card-img-top tripnest-card-image" alt="listing_img">
-            <div class="tripnest-price-badge">₹<%= listing.price?.toLocaleString("en-IN") %> / Night <div class="tripnest-tax-row">
-                <span class="tax-info">+18% GST</span>
-              </div>
+            <div class="tripnest-price-badge">
+              <span class="tripnest-price">₹<%= listing.price?.toLocaleString("en-IN") %> / Night</span>
+              <span class="tripnest-tax-row">+18% GST</span>
             </div>
 
           </div>
