@@ -334,7 +334,7 @@ body {
 }
 
 .tripnest-tax-row.show {
-    display: inline;
+    display: inline !important;
 }
 
 
