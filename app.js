@@ -67,7 +67,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 // ---------------------Main Root----------------------
 
 app.get("/", (req, res) => {
-    res.send("Hi, I am Root of Project")
+    res.render("home");
 })
 
 

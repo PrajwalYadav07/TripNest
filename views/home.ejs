@@ -1,0 +1,323 @@
+<% layout("layouts/boilerplate") %>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --tripnest-primary: #0f766e;
+    --tripnest-primary-dark: #115e59;
+    --tripnest-accent: #14b8a6;
+    --tripnest-text: #172033;
+    --tripnest-muted: #6b7280;
+    --tripnest-bg: #f8fafc;
+    --tripnest-white: #ffffff;
+    --tripnest-border: #e5e7eb;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    overflow-x: hidden;
+    background: var(--tripnest-bg);
+    color: var(--tripnest-text);
+    font-family: "Poppins", sans-serif;
+  }
+
+  .tripnest-home,
+  .tripnest-home * {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .tripnest-hero {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 0 8rem;
+    background:
+      linear-gradient(90deg, rgba(15, 68, 65, 0.72) 0%, rgba(15, 68, 65, 0.38) 55%, rgba(23, 32, 51, 0.12) 100%),
+      url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=85") center/cover no-repeat;
+  }
+
+  .tripnest-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+  }
+
+  .tripnest-hero h1 {
+    max-width: 650px;
+    margin-bottom: 1.25rem;
+    color: var(--tripnest-white);
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.12;
+  }
+
+  .tripnest-hero-copy {
+    max-width: 620px;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  .tripnest-primary-btn {
+    padding: 0.8rem 1.6rem;
+    border: 1px solid var(--tripnest-primary);
+    background: var(--tripnest-primary);
+    color: var(--tripnest-white);
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .tripnest-primary-btn:hover,
+  .tripnest-primary-btn:focus {
+    border-color: var(--tripnest-primary-dark);
+    background: var(--tripnest-primary-dark);
+    color: var(--tripnest-white);
+    transform: translateY(-2px);
+  }
+
+  .tripnest-info-wrap {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: -58px;
+    left: 0;
+  }
+
+  .tripnest-info-panel {
+    width: min(82%, 1050px);
+    margin: 0 auto;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid rgba(229, 231, 235, 0.8);
+    border-radius: 24px;
+    background: var(--tripnest-white);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .tripnest-info-item {
+    min-height: 64px;
+  }
+
+  .tripnest-info-icon,
+  .tripnest-feature-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(20, 184, 166, 0.12);
+    color: var(--tripnest-primary);
+    font-size: 1.1rem;
+  }
+
+  .tripnest-info-item h2 {
+    margin: 0 0 0.2rem;
+    color: var(--tripnest-text);
+    font-size: 0.98rem;
+    font-weight: 600;
+  }
+
+  .tripnest-info-item p {
+    margin: 0;
+    color: var(--tripnest-muted);
+    font-size: 0.82rem;
+  }
+
+  .tripnest-features {
+    padding: 8.5rem 0 5rem;
+    background: var(--tripnest-bg);
+  }
+
+  .tripnest-section-title {
+    margin-bottom: 0.75rem;
+    color: var(--tripnest-text);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+  }
+
+  .tripnest-section-copy {
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+    color: var(--tripnest-muted);
+    line-height: 1.7;
+  }
+
+  .tripnest-feature-card {
+    height: 100%;
+    padding: 1.75rem;
+    border: 1px solid var(--tripnest-border);
+    border-radius: 16px;
+    background: var(--tripnest-white);
+    box-shadow: 0 7px 22px rgba(23, 32, 51, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tripnest-feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(23, 32, 51, 0.1);
+  }
+
+  .tripnest-feature-card h3 {
+    margin: 1.15rem 0 0.6rem;
+    color: var(--tripnest-text);
+    font-size: 1.08rem;
+    font-weight: 600;
+  }
+
+  .tripnest-feature-card p {
+    margin: 0;
+    color: var(--tripnest-muted);
+    font-size: 0.93rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 991.98px) {
+    .tripnest-hero {
+      min-height: 76vh;
+      padding-bottom: 9rem;
+    }
+
+    .tripnest-info-panel { width: 90%; }
+  }
+
+  @media (max-width: 767.98px) {
+    .tripnest-hero {
+      min-height: 80vh;
+      align-items: flex-start;
+      padding-top: 6rem;
+      padding-bottom: 12.5rem;
+      background-position: 62% center;
+    }
+
+    .tripnest-hero-copy { font-size: 0.96rem; }
+
+    .tripnest-primary-btn {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .tripnest-info-wrap { bottom: -155px; }
+
+    .tripnest-info-panel {
+      width: calc(100% - 1.5rem);
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+    }
+
+    .tripnest-info-item {
+      min-height: 50px;
+    }
+
+    .tripnest-info-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .tripnest-features { padding-top: 12.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    .tripnest-primary-btn,
+    .tripnest-feature-card {
+      transition: none;
+    }
+  }
+</style>
+
+<main class="tripnest-home">
+  <section class="tripnest-hero">
+    <div class="container">
+      <div class="tripnest-hero-content">
+        <h1>Discover Your Next Escape</h1>
+        <p class="tripnest-hero-copy">
+          Find beautiful places to stay, explore new destinations, and create unforgettable travel memories with TripNest.
+        </p>
+        <a href="/listings" class="btn rounded-pill tripnest-primary-btn">
+          Explore Listings
+          <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="tripnest-info-wrap" aria-label="TripNest highlights">
+      <div class="tripnest-info-panel">
+        <div class="row g-3 align-items-center">
+          <div class="col-md-4 col-12">
+            <div class="tripnest-info-item d-flex align-items-center gap-3">
+              <span class="tripnest-info-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+              <div>
+                <h2>Beautiful Destinations</h2>
+                <p>Places worth discovering</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-12">
+            <div class="tripnest-info-item d-flex align-items-center gap-3">
+              <span class="tripnest-info-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+              <div>
+                <h2>Unique Stays</h2>
+                <p>Spaces with character</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-12">
+            <div class="tripnest-info-item d-flex align-items-center gap-3">
+              <span class="tripnest-info-icon"><i class="fa-solid fa-plane-departure" aria-hidden="true"></i></span>
+              <div>
+                <h2>Memorable Journeys</h2>
+                <p>Moments to remember</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tripnest-features">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="tripnest-section-title">Why TripNest?</h2>
+        <p class="tripnest-section-copy">Everything you need to find a stay that feels right for your next journey.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6 col-12">
+          <article class="card tripnest-feature-card shadow-sm">
+            <span class="tripnest-feature-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+            <h3>Beautiful Destinations</h3>
+            <p>Discover unique places around the world.</p>
+          </article>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-12">
+          <article class="card tripnest-feature-card shadow-sm">
+            <span class="tripnest-feature-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
+            <h3>Comfortable Stays</h3>
+            <p>Find stays that fit your travel plans.</p>
+          </article>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-12">
+          <article class="card tripnest-feature-card shadow-sm">
+            <span class="tripnest-feature-icon"><i class="fa-regular fa-compass" aria-hidden="true"></i></span>
+            <h3>Simple Exploration</h3>
+            <p>Explore listings and find your next destination.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
