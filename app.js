@@ -38,7 +38,6 @@ const { register } = require("module");
 
 
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderLust";
 const dbUrl = process.env.ATLASDB_URL;
 
 main().then(res => {
@@ -121,16 +120,6 @@ app.get("/", (req, res) => {
 })
 
 
-
-// app.get("/demouser", async(req, res) => {
-//     let fackUser = new User({
-//         email : "student-demo@gamil.com",
-//         username : "delta-student",
-//     })
-
-//     let registerUser = await User.register(fackUser, "helloworld")
-//     res.send(registerUser);
-// })
 
 
 app.use("/listings", listingRouter);
